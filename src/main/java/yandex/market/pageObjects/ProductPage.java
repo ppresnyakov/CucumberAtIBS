@@ -42,10 +42,10 @@ public class ProductPage extends Page{
         priceBlock.findElement(By.xpath(".//input[@name='" + type + "']"))
         .sendKeys(value);
     }
-
     public void selectManufacturer(String name) {
-        manufacturer.findElement(By.xpath(".//span[contains(text(), '" + name + "')]"))
-        .click();
+        manufacturer.findElement(By.xpath("//button[contains(text(), 'Показать всё')][1]")).click();
+        manufacturer.findElement(By.xpath(".//input[@name='Поле поиска']")).sendKeys(name);
+        manufacturer.findElement(By.xpath(".//span[contains(text(), '" + name + "')]")).click();
     }
 
     public int getItemsCount(List<WebElement> items) throws InterruptedException {

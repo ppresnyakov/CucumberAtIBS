@@ -22,26 +22,26 @@ public class ProductPageSteps {
         this.productPage = new ProductPage();
     }
 
-    @Step("Заголовок  открывшейся страницы = '{title}'")
+    @Step("Заголовок  открывшейся страницы = '{0}'")
     public void checkTitle(String title) {
         assertTrue(
                 productPage.checkTitle(driver, title)
         );
     }
 
-    @Step("Установить '{priceType}' - '{priceValue}'")
+    @Step("Установить '{priceType}' - '{0}'")
     public void setPriceTo(String priceType, String priceValue) {
         productPage.setPriceTo(priceType, priceValue);
         GeneralMethods.getScreenshot(driver);
     }
 
-    @Step("Выбрать производителя - '{name}'")
+    @Step("Выбрать производителя - '{0}'")
     public void selectManufacturer(String name) {
         productPage.selectManufacturer(name);
         GeneralMethods.getScreenshot(driver);
     }
 
-    @Step("Отображено товаров больше чем {threshold}")
+    @Step("Отображено товаров больше чем {0}")
     public void checkItemsQuantity(int threshold) throws InterruptedException {
         oldItems = productPage.getItems();
         assertTrue(
@@ -49,7 +49,7 @@ public class ProductPageSteps {
         );
     }
 
-    @Step("Выполнить поиск по товару под номером {number}")
+    @Step("Выполнить поиск по товару под номером {0}")
     public void searchByItemNumber(int number) {
         oldItemName = productPage.getItemTitle(oldItems.get(number));
         productPage.searchByHeaderInput(oldItemName);

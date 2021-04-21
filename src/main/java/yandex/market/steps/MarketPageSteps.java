@@ -17,7 +17,7 @@ public class MarketPageSteps {
         this.marketPage = new MarketPage();
     }
 
-    @Step("Заголовок  открывшейся страницы = '{0}'")
+    @Step("Заголовок  открывшейся страницы = \"{0}\"")
     public void checkTitle(String title) {
         GeneralMethods.switchDriverToNextTab(driver);
         assertTrue(
@@ -25,7 +25,7 @@ public class MarketPageSteps {
         );
     }
 
-    @Step("Нажать на каталог '{0}'")
+    @Step("Нажать на каталог \"{0}\"")
     public void clickOnCatalog(String catalogName) {
         marketPage.clickOnCatalog(catalogName);
     }

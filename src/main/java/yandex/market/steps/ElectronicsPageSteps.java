@@ -19,13 +19,13 @@ public class ElectronicsPageSteps {
         this.electronicsPage = new ElectronicsPage();
     }
 
-    @Step("Заголовок  открывшейся страницы = '{0}'")
+    @Step("Заголовок  открывшейся страницы = \"{0}\"")
     public void checkTitle(String title) {
         assertTrue(electronicsPage.checkTitle(driver, title));
 
     }
 
-    @Step("Нажать на элемент каталога - '{0}'")
+    @Step("Нажать на элемент каталога - \"{0}\"")
     public void clickOnCatalogItem(String name) {
         electronicsPage.clickOnCatalogItem(name);
     }

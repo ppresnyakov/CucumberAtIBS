@@ -24,12 +24,12 @@ public class MainPageSteps {
         this.mainPage = new MainPage();
     }
 
-    @Step("Заголовок  открывшейся страницы = '{0}'")
+    @Step("Заголовок  открывшейся страницы = \"{0}\"")
     public void checkTitle(String title) {
         assertTrue(mainPage.checkTitle(driver, title));
     }
 
-    @Step("Нажать на сервис - '{0}'")
+    @Step("Нажать на сервис - \"{0}\"")
     public void clickOnService(String service) {
         mainPage.clickOnService(service);
     }

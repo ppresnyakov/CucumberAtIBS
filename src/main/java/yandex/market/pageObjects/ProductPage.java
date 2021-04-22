@@ -1,5 +1,6 @@
 package yandex.market.pageObjects;
 
+import com.sun.corba.se.impl.oa.poa.ActiveObjectMap;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -41,8 +42,12 @@ public class ProductPage extends Page{
     }
     public void selectManufacturer(String name) {
 
+        if (elementIsNotPresent(".//input[@name='Поле поиска']"));
+        {manufacturer.findElement(By.xpath("//button[contains(text(), 'Показать всё')][1]")).click();}
+        manufacturer.findElement(By.xpath(".//input[@name='Поле поиска']")).sendKeys(name);
         manufacturer.findElement(By.xpath(".//span[contains(text(), '" + name + "')]")).click();
-
+        manufacturer.findElement(By.xpath(".//input[@name='Поле поиска']")).clear();
+        manufacturer.findElement(By.xpath(".//input[@name='Поле поиска']")).sendKeys("\n");
     }
 
     public int getItemsCount(List<WebElement> items) throws InterruptedException {
@@ -65,12 +70,8 @@ public class ProductPage extends Page{
         headerSearchInput.sendKeys(text);
         headerSearchInput.sendKeys(Keys.ENTER);
     }
-    public boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    public boolean elementIsNotPresent(String xpath){
+        return driver.findElements(By.xpath(xpath)).isEmpty();
+
     }
 }

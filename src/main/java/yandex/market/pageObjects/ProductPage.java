@@ -1,9 +1,6 @@
 package yandex.market.pageObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,9 +40,9 @@ public class ProductPage extends Page{
         .sendKeys(value);
     }
     public void selectManufacturer(String name) {
-        manufacturer.findElement(By.xpath("//button[contains(text(), 'Показать всё')][1]")).click();
-        manufacturer.findElement(By.xpath(".//input[@name='Поле поиска']")).sendKeys(name);
+
         manufacturer.findElement(By.xpath(".//span[contains(text(), '" + name + "')]")).click();
+
     }
 
     public int getItemsCount(List<WebElement> items) throws InterruptedException {
@@ -67,5 +64,13 @@ public class ProductPage extends Page{
         headerSearchInput.click();
         headerSearchInput.sendKeys(text);
         headerSearchInput.sendKeys(Keys.ENTER);
+    }
+    public boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
